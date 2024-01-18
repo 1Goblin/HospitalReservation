@@ -1,0 +1,124 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="select.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script>
+    const logout = () => { window.location.href = "http://localhost:3000/logout" };
+    const move = () => { window.location.href = "http://localhost:3000/super" };
+    const movesearch = () => { window.location.href = "http://localhost:3000/search" };
+  </script>
+</head>
+<div class="header">
+  <div class="header-logo">
+    <div class="logo"><img src="./img/inhaLogo.png" alt="INHA UNIVERSITY" /></div>
+    <span class="logo-text">Reservation</span>
+  </div>
+
+  <div class="header-info">
+    <span class="header-info_title">Welcom to inhaHospital.(A+ grade) </span>
+  </div>
+</div>
+
+<div class="content">
+  <div class="side">
+    <div class="side-frame">
+      <div class="side-frame_id">
+        <div class="userinfo">{{user}}</div>
+        <button class="logout" onclick="logout()">Logout</button>
+      </div>
+    </div>
+    <div class="side-menu">
+      
+      <div class="side-menu_list" onclick="move()">
+        <span>supervisor page</span>
+        <span class="material-icons">add</span>
+      </div>
+
+      <div class="side-menu_list" onclick="movesearch()">
+        <span>Search-Patient</span>
+        <span class="material-icons">add</span>
+      </div>
+     
+
+    </div>
+  </div>
+  <div class="main">
+    <div class="main-top">
+      <span class="main-top_title">Course registration for the 2nd semester of 2023</span>
+      <div class="main-top_table">
+        <h1 class="info">{{title}}</h1>
+        <span class="main-bottom_title">Doctor</span>
+        <table>
+          <tr>
+            <td><b>Doctor_Id</b></td>
+            <td><b>Name</b></td>
+            <td><b>Address</b></td>
+            <td><b>PhoneNumber</b></td>
+            <td><b>Medical_id</b></td>
+            <td><b>Role</b></td>
+          </tr>
+          {{#each doctor}}
+          <form method="post">
+            <tr>
+              <td><input type="text" name="id" value="{{D_id}}"></td>
+              <td><input type="text" name="name" value="{{Name}}"></td>
+              <td><input type="text" name="address" value="{{Address}}"></td>
+              <td><input type="text" name="phonenumber" value="{{PhoneNumber}}"></td>
+              <td><input type="text" name="m_id" value="{{D_M_id}}"></td>
+              <td><input type="text" name="role" value="{{Role}}"></td>
+              <td><input type="submit" name="action" value="modify" formaction="/super"></td>
+              <td><input type="submit" name="action" value="delete" formaction="/super"></td>
+            </tr>
+          </form>
+          {{/each}}
+        </table>
+
+        <h1 class="info">{{title2}}</h1>
+        <span class="main-bottom_title">Nurse</span>
+        <table>
+          <tr>
+            <td><b>Nurse_Id</b></td>
+            <td><b>Name</b></td>
+            <td><b>Address</b></td>
+            <td><b>PhoneNumber</b></td>
+            <td><b>Medical_id</b></td>
+            <td><b>Role</b></td>
+          </tr>
+          {{#each nurse}}
+          <form method="post">
+            <tr>
+              <td><input type="text" name="id" value="{{N_id}}"></td>
+              <td><input type="text" name="name" value="{{Name}}"></td>
+              <td><input type="text" name="address" value="{{Address}}"></td>
+              <td><input type="text" name="phonenumber" value="{{PhoneNumber}}"></td>
+              <td><input type="text" name="m_id" value="{{N_M_id}}"></td>
+              <td><input type="text" name="role" value="{{Role}}"></td>
+              <td><input type="submit" name="action" value="modify" formaction="/super"></td>
+              <td><input type="submit" name="action" value="delete" formaction="/super"></td>
+            </tr>
+          </form>
+          {{/each}}
+        </table>
+
+        <h1 class="info">{{title3}}</h1>
+
+<form method="post">
+  <label for="Employee_id">Employee_id : </label>
+  <input type="text" name="e_id" required>
+  <label for="Name">Name : </label>
+  <input type="text" name="name" required>
+  <label for="Address">Address : </label>
+  <input type="text" name="address" required>
+  <label for="PhoneNumber">PhoneNumber : </label>
+  <input type="text" name="phonenumber" required>
+  <label for="Medical_id">Medical_id : </label>
+  <input type="text" name="m_id" required>
+  <label for="Password">Password : </label>
+  <input type="text" name="password" required>
+  <label for="Role">Role : </label>
+  <input type="text" name="role" required>
+  <input type="submit" name="action" value="insert" formaction="/super">
+</form>
+      </div>
+    </div>
+  </div>
+</div>

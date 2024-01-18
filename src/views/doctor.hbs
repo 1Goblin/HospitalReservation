@@ -1,0 +1,85 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="select.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script>
+    const logout = () => { window.location.href = "http://localhost:3000/logout" };
+    const move = () => { window.location.href = "http://localhost:3000/examination" };
+    const movesearch = () => { window.location.href = "http://localhost:3000/search" };
+  </script>
+</head>
+<div class="header">
+  <div class="header-logo">
+    <div class="logo"><img src="./img/inhaLogo.png" alt="INHA UNIVERSITY" /></div>
+    <span class="logo-text">Reservation</span>
+  </div>
+
+  <div class="header-info">
+    <span class="header-info_title">Welcom to inhaHospital.(A+ grade) </span>
+  </div>
+</div>
+
+<div class="content">
+  <div class="side">
+    <div class="side-frame">
+      <div class="side-frame_id">
+        <div class="userinfo">{{user}}</div>
+        <button class="logout" onclick="logout()">Logout</button>
+      </div>
+    </div>
+    <div class="side-menu">
+      <div class="side-menu_list" onclick="move()">
+        <span>Examination</span>
+        <span class="material-icons">add</span>
+      </div>
+     <div class="side-menu_list" onclick="movesearch()">
+        <span>Search-Patient</span>
+        <span class="material-icons">add</span>
+      </div>
+
+    </div>
+  </div>
+  <div class="main">
+    <div class="main-top">
+      <span class="main-top_title">Course registration for the 2nd semester of 2023</span>
+      <div class="main-top_table">
+        <h1 class="info">{{title}}</h1>
+        <span class="main-bottom_title">Reservated Patient</span>
+        <table>
+          <tr>
+            <td><b>Doctor_id</b></td>
+            <td><b>Reservation_id</b></td>
+            <td><b>Date</b></td>
+            <td><b>Patient_id</b></td>
+            <td><b>PatientName</b></td>
+            <td><b>Sex</b></td>
+            <td><b>Address</b></td>
+            <td><b>Blood</b></td>
+            <td><b>Height</b></td>
+            <td><b>Weight</b></td>
+            <td><b>PatientPhoneNumber</b></td>
+          </tr>
+          {{#each Dreservation}}
+          <form method="post">
+            <tr>
+              <td><input type="text" name="D_id" value="{{D_id}}"></td>
+              <td><input type="text" name="R_id" value="{{R_id}}"></td>
+              <td><input type="text" name="Date" value="{{Date}}"></td>
+              <td><input type="text" name="P_id" value="{{P_id}}"></td>
+              <td><input type="text" name="PatientName" value="{{PatientName}}"></td>
+              <td><input type="text" name="Sex" value="{{Sex}}"></td>
+              <td><input type="text" name="Address" value="{{Address}}"></td>
+              <td><input type="text" name="Blood" value="{{Blood}}"></td>
+              <td><input type="text" name="Height" value="{{Height}}"></td>
+              <td><input type="text" name="Weight" value="{{Weight}}"></td>
+              <td><input type="text" name="PatientPhoneNumber" value="{{PatientPhoneNumber}}"></td>
+              <td><input type="submit" name="action" value="modify" formaction="/doctor"></td>
+              <td><input type="submit" name="action" value="delete" formaction="/doctor"></td>
+              <td><input type="submit" name="action" value="examination" formaction="/doctor"></td>
+            </tr>
+          </form>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

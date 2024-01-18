@@ -1,0 +1,107 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="select.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script>
+    const logout = () => { window.location.href = "http://localhost:3000/logout" };
+    const movedoctor = () => { window.location.href = "http://localhost:3000/doctor" };
+    const moveNurse = () => { window.location.href = "http://localhost:3000/nurse" };
+    const movesuper = () => { window.location.href = "http://localhost:3000/super" };
+  </script>
+</head>
+<div class="header">
+  <div class="header-logo">
+    <div class="logo"><img src="./img/inhaLogo.png" alt="INHA UNIVERSITY" /></div>
+    <span class="logo-text">Reservation</span>
+  </div>
+
+  <div class="header-info">
+    <span class="header-info_title">Welcom to inhaHospital.(A+ grade) </span>
+  </div>
+</div>
+
+<div class="content">
+  <div class="side">
+    <div class="side-frame">
+      <div class="side-frame_id">
+        <div class="userinfo">{{user}}</div>
+        <button class="logout" onclick="logout()">Logout</button>
+      </div>
+    </div>
+    <div class="side-menu">
+      
+      <div class="side-menu_list" onclick="moveNurse()">
+        <span>Nurse</span>
+        <span class="material-icons">add</span>
+      </div>
+      <div class="side-menu_list" onclick="movedoctor()">
+        <span>Doctor</span>
+        <span class="material-icons">add</span>
+      </div>
+      <div class="side-menu_list" onclick="movesuper()">
+        <span>Supervisor</span>
+        <span class="material-icons">add</span>
+      </div>
+
+    </div>
+  </div>
+  <div class="main">
+    <div class="main-top">
+      <span class="main-top_title">Course registration for the 2nd semester of 2023</span>
+      <div class="main-top_table">
+
+
+        <h1 class="info">{{title}}</h1>
+        <form method="post">
+            <label for="Name">Name : </label>
+            <input type="text" name="Name" required>
+            <input type="submit" name="action" value="searchname" formaction="/search">
+        </form>
+
+        <h1 class="info">{{title2}}</h1>
+        <form method="post">
+            <label for="Name">Sex : </label>
+            <input type="text" name="Sex" required>
+            <input type="submit" name="action" value="searchsex" formaction="/search">
+        </form>
+
+        <h1 class="info">{{title3}}</h1>
+        <form method="post">
+            <label for="Name">Blood : </label>
+            <input type="text" name="Blood" required>
+            <input type="submit" name="action" value="searchblood" formaction="/search">
+        </form>
+
+        <h1 class="info">{{title4}}</h1>
+        <form method="post">
+            <label for="Name">Patinet_id : </label>
+            <input type="text" name="Pid" required>
+            <input type="submit" name="action" value="searchpid" formaction="/search">
+        </form>
+
+        <h1 class="info">{{title5}}</h1>
+        <span class="main-bottom_title">Patient Info</span>
+        <table>
+          <tr>
+            <td><b>Name</b></td>
+            <td><b>Sex</b></td>
+            <td><b>Blood</b></td>
+            <td><b>PhoneNumber</b></td>
+            <td><b>Patient_id</b></td>
+          </tr>
+          {{#each searchname}}
+          <form method="post">
+            <tr>
+              <td>{{Name}}</td>
+              <td>{{Sex}}</td>
+              <td>{{Blood}}</td>
+              <td>{{PhoneNumber}}</td>
+              <td>{{P_id}}</td>
+            </tr>
+          </form>
+          {{/each}}
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>

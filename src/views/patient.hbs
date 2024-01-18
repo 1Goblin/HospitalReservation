@@ -1,0 +1,119 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="select.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script>
+    const logout = () => { window.location.href = "http://localhost:3000/logout" };
+    const move = () => { window.location.href = "http://localhost:3000/inpatient" };
+  </script>
+</head>
+<div class="header">
+  <div class="header-logo">
+    <div class="logo"><img src="./img/inhaLogo.png" alt="INHA UNIVERSITY" /></div>
+    <span class="logo-text">Reservation</span>
+  </div>
+
+  <div class="header-info">
+    <span class="header-info_title">Welcom to inhaHospital.(A+ grade) </span>
+  </div>
+</div>
+
+<div class="content">
+  <div class="side">
+    <div class="side-frame">
+      <div class="side-frame_id">
+        <div class="userinfo">{{user}}</div>
+        <button class="logout" onclick="logout()">Logout</button>
+      </div>
+    </div>
+    <div class="side-menu">
+      <div class="side-menu_list" onclick="move()">
+        <span>Inpatient</span>
+        <span class="material-icons">add</span>
+      </div>
+
+    </div>
+  </div>
+  <div class="main">
+    <div class="main-top">
+      <span class="main-top_title">Course registration for the 2nd semester of 2023</span>
+      <div class="main-top_table">
+        <h1 class="info">{{title}}</h1>
+        <span class="main-bottom_title">My reservation</span>
+        <table>
+          <tr>
+            <td><b>Reservation_id</b></td>
+            <td><b>Patient_id</b></td>
+            <td><b>Docotr_id</b></td>
+            <td><b>Medical_specialty_id</b></td>
+            <td><b>Date</b></td>
+          </tr>
+          {{#each reservation}}
+          <form method="post">
+            <tr>
+              <td><input type="text" name="R_id" value="{{R_id}}"></td>
+              <td><input type="text" name="P_id" value="{{R_P_id}}"></td>
+              <td><input type="text" name="D_id" value="{{R_D_id}}"></td>
+              <td><input type="text" name="M_id" value="{{R_M_id}}"></td>
+              <td><input type="text" name="Date" value="{{Date}}"></td>
+              <td><input type="submit" name="action" value="delete" formaction="/patient"></td>
+            </tr>
+          </form>
+          {{/each}}
+        </table>
+
+        <h1 class="info">{{title2}}</h1>
+        <span class="main-bottom_title">Overall reservation status</span>
+        <table>
+          <tr>
+            <td><b>Doctor_id</b></td>
+            <td><b>Medical_specialty_id</b></td>
+            <td><b>Reservation_id</b></td>
+            <td><b>Date</b></td>
+          </tr>
+          {{#each booked}}
+          <form method="post">
+            <tr>
+              <td>{{D_id}}</td>
+              <td>{{D_M_id}}</td>
+              <td>{{R_id}}</td>
+              <td>{{Date}}</td>
+            </tr>
+          </form>
+          {{/each}}
+        </table>
+
+        <h1 class="info">{{title2}}</h1>
+        <span class="main-bottom_title">Doctor and Medical_specialty</span>
+        <table>
+          <tr>
+            <td><b>Doctor_id</b></td>
+            <td><b>Medical_specialty_id</b></td>
+          </tr>
+          {{#each doctor}}
+          <form method="post">
+            <tr>
+              <td>{{D_id}}</td>
+              <td>{{D_M_id}}</td>
+            </tr>
+          </form>
+          {{/each}}
+        </table>
+
+<h1 class="info">{{title3}}</h1>
+<span class="main-bottom_title">Reservation</span>
+{{#each patient}}
+<form method="post">
+  <label for="D_id">D_id:</label>
+  <input type="text" name="D_id" required>
+  <label for="M_id">M_id:</label>
+  <input type="text" name="M_id" required>
+  <label for="Date">Date:</label>
+  <input type="text" name="Date" required>
+  <input type="submit" name="action" value="reservation" formaction="/patient">
+</form>
+{{/each}}
+
+      </div>
+    </div>
+  </div>
+</div>

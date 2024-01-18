@@ -10,3 +10,8 @@ npm install express mysql2 body-parser nodemon morgan dotev express-session
 npm install @babel/core @babel/preset-env
 
 npm link hbs
+
+
+
+
+npm run start
